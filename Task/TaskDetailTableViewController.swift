@@ -9,6 +9,33 @@
 import UIKit
 
 class TaskDetailTableViewController: UITableViewController {
+    
+    var tasks = [Task]()
+    
+    //MARK: - IBOutlets
+
+    @IBOutlet weak var nameTextField: NSLayoutConstraint!
+    
+    @IBOutlet weak var dueDate: UIDatePicker!
+    
+    @IBOutlet weak var notesTextView: UITextView!
+    
+    //MARK: - IBActions
+
+    @IBAction func saveButton(sender: AnyObject) {
+        if let task = tasks {
+            guard let name = TaskController.sharedInstance.
+        }
+        
+        self.navigationController?.popToRootViewControllerAnimated(true)
+        
+    }
+    
+    func updateWithTask(task: Task) {
+        self.nameTextField = task.name
+        self.dueDate = task.due
+        self.notesTextView = task.notes
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +56,12 @@ class TaskDetailTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
 
     /*
