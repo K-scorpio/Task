@@ -24,7 +24,7 @@ class TaskDetailTableViewController: UITableViewController {
 
     @IBAction func saveButton(sender: AnyObject) {
         if let task = tasks {
-            guard let name = TaskController.sharedInstance.
+            guard let name = TaskController.sharedInstance
         }
         
         self.navigationController?.popToRootViewControllerAnimated(true)
