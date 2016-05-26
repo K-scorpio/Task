@@ -78,14 +78,14 @@
                         <sections>
                             <tableViewSection headerTitle="Name" id="K1s-NN-WLA">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qrw-IW-qPr">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nameCell" id="qrw-IW-qPr">
                                         <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qrw-IW-qPr" id="IdD-sJ-Dcl">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Give your task a name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RSJ-9x-obp">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name your task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RSJ-9x-obp">
                                                     <rect key="frame" x="8" y="7" width="584" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -102,7 +102,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Due" id="yxe-VZ-OvV">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="oTG-96-SPX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dueDateCell" id="oTG-96-SPX">
                                         <rect key="frame" x="0.0" y="207.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oTG-96-SPX" id="dyy-oJ-J71">
@@ -126,7 +126,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Notes" id="hTs-sb-mEo">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="254" id="gE4-Wh-l3H">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesCell" rowHeight="254" id="gE4-Wh-l3H">
                                         <rect key="frame" x="0.0" y="301.5" width="600" height="254"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gE4-Wh-l3H" id="FxR-S9-mJY">
@@ -157,7 +157,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Task" id="NoD-cp-QSt">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uvQ-dK-Ntg"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uvQ-dK-Ntg">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="u7A-Q9-aol" id="Bqx-4Y-zOd"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="0KB-mJ-QvT">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="u7A-Q9-aol" id="fnx-IH-A72"/>
@@ -167,6 +171,7 @@
                     <connections>
                         <outlet property="bodyTextField" destination="3yQ-9o-4xy" id="B30-15-1Bx"/>
                         <outlet property="dueDate" destination="zjs-Jh-sia" id="7EH-aU-2sg"/>
+                        <outlet property="dueDatePicker" destination="R6s-aN-gXK" id="XVP-Ke-3DK"/>
                         <outlet property="titleTextField" destination="RSJ-9x-obp" id="rCa-Mr-sa5"/>
                     </connections>
                 </tableViewController>
@@ -177,8 +182,15 @@
                     <date key="date" timeIntervalSinceReferenceDate="485926480.78778201">
                         <!--2016-05-26 03:34:40 +0000-->
                     </date>
+                    <connections>
+                        <action selector="datePicker:" destination="u7A-Q9-aol" eventType="valueChanged" id="ytW-t6-oHg"/>
+                    </connections>
                 </datePicker>
-                <tapGestureRecognizer id="vk3-N1-Wsu"/>
+                <tapGestureRecognizer id="vk3-N1-Wsu">
+                    <connections>
+                        <action selector="userTapped:" destination="u7A-Q9-aol" id="pa4-Tv-Ulo"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1799" y="484"/>
         </scene>

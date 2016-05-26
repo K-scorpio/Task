@@ -14,17 +14,44 @@ class TaskDetailTableViewController: UITableViewController {
     
     var dueDateValue: NSDate?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        dueDate.inputView = dueDatePicker
+        if let task = task {
+            updateWithTask(task)
+        }
+    }
+    
     //MARK: - IBOutlets
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dueDate: UITextField!
     @IBOutlet weak var bodyTextField: UITextView!
+    @IBOutlet var dueDatePicker: UIDatePicker!
+    
     
     //MARK: - IBActions
 
     @IBAction func saveButtonTapped(sender: AnyObject) {
          updateTask()
         TaskController.sharedInstance.saveToPersistentStore()
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func cancelButtonTapped(sender: AnyObject) {
+         navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func datePicker(sender: UIDatePicker) {
+        self.dueDate.text = sender.date.stringValue()
+        self.dueDateValue = sender.date
+    }
+
+    
+    @IBAction func userTapped(sender: AnyObject) {
+        self.titleTextField.resignFirstResponder()
+        self.dueDate.resignFirstResponder()
+        self.bodyTextField.resignFirstResponder()
     }
     
     func updateTask() {
@@ -54,11 +81,6 @@ class TaskDetailTableViewController: UITableViewController {
             bodyTextField.text = notes
         }
     }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -67,15 +89,15 @@ class TaskDetailTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 3
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
-    }
+//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 3
+//    }
+//
+//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return 1
+//    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

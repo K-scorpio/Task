@@ -15,7 +15,7 @@ class TaskController {
     var tasks: [Task] = []
     
     init() {
-        tasks = fetchTasks()
+       tasks = fetchTasks()
     }
     
     var mockTasks:[Task] {
