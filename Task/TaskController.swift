@@ -36,15 +36,22 @@ class TaskController {
     }
     
     func addTask(name: String, notes: String?, due: NSDate?) {
-        
+        let task = Task(name: name, notes: notes, due: due)
+        tasks.append(task)
     }
     
     func removeTask(task: Task) {
-        
+        guard let index = tasks.indexOf(task) else {
+            return
+        }
+        tasks.removeAtIndex(index)
     }
     
     func updateTask(task: Task, name: String, notes: String?, due: NSDate?, isComplete: Bool) {
-        
+        task.due = due
+        task.isComplete = isComplete
+        task.name = name
+        task.notes = notes
     }
     
     func saveToPersistentStore() {
